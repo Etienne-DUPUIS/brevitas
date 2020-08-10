@@ -97,7 +97,7 @@ def export_finn_onnx(module, input_shape, export_path, input_t = None,
         # and output shapes
         output_t = module.forward(input_t)
         # override any given input_t to make sure it's a standard PyTorch tensor
-        input_t = torch.empty(input_shape, dtype=torch.float)
+        input_t = torch.empty(input_shape, dtype=torch.float).cuda()
         # enable export mode and call export
         _prepare_for_finn_onnx_export(module, enable_export = True)
         torch.onnx.export(module, input_t, export_path, **torch_onnx_kwargs)
