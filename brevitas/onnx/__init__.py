@@ -92,7 +92,7 @@ def export_finn_onnx(module, input_shape, export_path, input_t = None,
         # TODO maybe consider a deepcopy of the module first?
         module = module.eval()
         if input_t is None:
-            input_t = torch.empty(input_shape, dtype=torch.float)
+            input_t = torch.empty(input_shape, dtype=torch.float).to(device = 'cuda')
         # do a forward pass with the dummy input to e.g. store per-layer input
         # and output shapes
         output_t = module.forward(input_t)
