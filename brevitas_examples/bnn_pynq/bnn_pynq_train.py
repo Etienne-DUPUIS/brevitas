@@ -130,6 +130,11 @@ def main(cmd_args):
     else:
         trainer.train_model()
 
+    # Export as ONNX
+    import brevitas.onnx as bo
+    trainer.model.cpu()
+    bo.export_finn_onnx(trainer.model, (1, 1, 28, 28), args.experiments + "/LeNet_w8_a8.onnx")
+
 
 if __name__ == "__main__":
     main(sys.argv[1:])
