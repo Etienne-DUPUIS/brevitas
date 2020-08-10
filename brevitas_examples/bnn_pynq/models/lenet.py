@@ -81,7 +81,7 @@ class Lenet(Module):
                                                          per_out_ch_scaling=INTERMEDIATE_FC_PER_OUT_CH_SCALING,
                                                          bit_width=weight_bit_width,
                                                          quant_type=weight_quant_type))
-            self.linear_features.append(BatchNorm1d(out_features, eps=1e-4))
+            #self.linear_features.append(BatchNorm1d(out_features, eps=1e-4))
             self.linear_features.append(get_act_quant(act_bit_width, act_quant_type))
 
         # ADD LAST FC LAYER TO MODEL
