@@ -56,7 +56,7 @@ def accuracy(output, target, topk=(1,)):
 
 class Trainer(object):
     def __init__(self, args):
-
+        print(args.network)
         model, cfg = model_with_cfg(args.network, args.pretrained)
 
         # Init arguments
