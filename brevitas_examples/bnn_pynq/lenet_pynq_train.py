@@ -20,7 +20,13 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-pip
+import argparse
+import os
+import sys
+
+import torch
+from brevitas_examples.bnn_pynq.trainer import Trainer
+
 
 # Pytorch precision
 torch.set_printoptions(precision=10)
@@ -123,6 +129,10 @@ def main(cmd_args):
             trainer.eval_model()
     else:
         trainer.train_model()
+
+    # Export as ONNX
+    import brevitas.onnx as bo
+    bo.export_finn_onnx(trainer.model, (1, 1, 28, 28), args.experiments + "/LeNet_w8_a8.onnx")
 
 
 if __name__ == "__main__":
