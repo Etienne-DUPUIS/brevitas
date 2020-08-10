@@ -48,7 +48,7 @@ POOL_SIZE = 2
 class Lenet(Module):
 
     def __init__(self, num_classes=10, weight_bit_width=None, act_bit_width=None, in_bit_width=None, in_ch=3):
-        super(CNV, self).__init__()
+        super(Lenet, self).__init__()
 
         weight_quant_type = get_quant_type(weight_bit_width)
         act_quant_type = get_quant_type(act_bit_width)
