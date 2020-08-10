@@ -132,6 +132,7 @@ def main(cmd_args):
 
     # Export as ONNX
     import brevitas.onnx as bo
+    trainer.model.cuda()
     bo.export_finn_onnx(trainer.model, (1, 1, 28, 28), args.experiments + "/LeNet_w8_a8.onnx")
 
 
