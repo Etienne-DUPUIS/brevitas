@@ -36,12 +36,14 @@ from .CNV import cnv
 from .LFC import lfc
 from .TFC import tfc
 from .SFC import sfc
+from .lenet import lenet
 
 model_impl = {
     'CNV': cnv,
     'LFC': lfc,
     'TFC': tfc,
-    'SFC': sfc
+    'SFC': sfc,
+    'LENET': lenet
 }
 
 def get_model_cfg(name):
