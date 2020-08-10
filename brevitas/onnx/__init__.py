@@ -92,12 +92,12 @@ def export_finn_onnx(module, input_shape, export_path, input_t = None,
         # TODO maybe consider a deepcopy of the module first?
         module = module.eval()
         if input_t is None:
-            input_t = torch.empty(input_shape, dtype=torch.float).cuda()
+            input_t = torch.empty(input_shape, dtype=torch.float)
         # do a forward pass with the dummy input to e.g. store per-layer input
         # and output shapes
         output_t = module.forward(input_t)
         # override any given input_t to make sure it's a standard PyTorch tensor
-        input_t = torch.empty(input_shape, dtype=torch.float).cuda()
+        input_t = torch.empty(input_shape, dtype=torch.float)
         # enable export mode and call export
         _prepare_for_finn_onnx_export(module, enable_export = True)
         torch.onnx.export(module, input_t, export_path, **torch_onnx_kwargs)
